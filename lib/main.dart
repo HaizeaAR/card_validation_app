@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:validador_tarjeta/presentation/text_bubble.dart';
+import 'config/themes/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Validador de tarjetas',
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: const Color.fromARGB(255, 55, 110, 188)),
-      ),
-      home: const MyHomePage(title: 'Validador de tarjetas'),
-      
+
+      theme: AppTheme(selectedColor: 1).theme(),
+      home: const MyHomePage(title: 'Validador de tarjetas'),      
     );
   }
 }
@@ -48,8 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             const Text('Introduce el número de tarjeta:')
           ],
+          ),
         ),
-      ),
     );
   }
 }
