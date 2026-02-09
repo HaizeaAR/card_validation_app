@@ -1,5 +1,6 @@
   
 import 'package:validador_tarjeta/config/date_validation.dart';
+import 'package:validador_tarjeta/config/card_number_validation.dart';
 
 class CardInfo {
 
@@ -48,8 +49,28 @@ class CardInfo {
     if (expDate == true) {
       return null;
   }
+  
     return null;
   }
+  }
+
+  String? validateCardNumber(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'El número de tarjeta no puede estar vacío';
+    }
+    if (validateCardNumber(value) == true) {
+      return null;
+    }
+    return 'Número de tarjeta no válido';
 
   
   }
+
+  String? validateName(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'El nombre no puede estar vacío';
+    }
+    return null; // Nombre válido
+  } 
+
+  
