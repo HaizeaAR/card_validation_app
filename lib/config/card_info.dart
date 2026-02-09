@@ -58,7 +58,7 @@ class CardInfo {
     if (value == null || value.isEmpty) {
       return 'El número de tarjeta no puede estar vacío';
     }
-    if (validateCardNumber(value) == true) {
+    if (luhn(value) == true) {
       return null;
     }
     return 'Número de tarjeta no válido';
@@ -73,4 +73,4 @@ class CardInfo {
     return null; // Nombre válido
   } 
 
-  
+
