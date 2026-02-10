@@ -2,6 +2,7 @@
 import 'package:validador_tarjeta/config/date_validation.dart';
 import 'package:validador_tarjeta/config/card_number_validation.dart';
 
+//Aqui represento la información de la tarjeta, con sus atributos y un constructor para inicializarlos, ademas de una clase con métodos para validar cada uno de los atributos de la tarjeta
 class CardInfo {
 
   CardType? type;
@@ -31,7 +32,11 @@ class CardInfo {
     other
   }
 
+
+
   class CardUtils {
+
+
     static String? validateCVV(String? value) {
       if (value == null || value.isEmpty) {
         return 'CVV no puede estar vacío';
@@ -42,30 +47,27 @@ class CardInfo {
       return null; // CVV válido
     }
   
-  static String? validateDate(String? value) {
-  if (value == null || value.isEmpty) {
-    return 'La fecha de caducidad no puede estar vacía';
-  }
-
-  if (expDate(value) == true) {
-    return null;
-  }
-
-  return 'Fecha de caducidad inválida';
-}
+    static String? validateDate(String? value) {
+      if (value == null || value.isEmpty) {
+        return 'La fecha de caducidad no puede estar vacía';
+      }
+      if (expDate(value) == true) {
+        return null;
+    }
+        return 'Fecha de caducidad inválida';
+    } 
   
 
-  String? validateCardNumber(String? value) {
-    if (value == null || value.isEmpty) {
+    String? validateCardNumber(String? value) {
+     if (value == null || value.isEmpty) {
       return 'El número de tarjeta no puede estar vacío';
     }
     if (luhn(value) == true) {
       return null;
     }
     return 'Número de tarjeta no válido';
-
-  
   }
+
 
   String? validateName(String? value) {
     if (value == null || value.isEmpty) {
@@ -73,6 +75,7 @@ class CardInfo {
     }
     return null; // Nombre válido
   } 
+  
   }
 
 
