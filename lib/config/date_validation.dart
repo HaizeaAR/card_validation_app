@@ -1,17 +1,18 @@
-bool expDate(int month, int year) {
-  //con DataTime.now saco la fecha actual, luego consigo los valores de mes y saño para poder compararlos con el currentYear y currentMonth
-  final now = DateTime.now();
-  final currentYear = now.year;
-  final currentMonth = now.month;
+bool expDate(String? value) {
+  if (value == null || value.isEmpty) return false;
 
-  //Comparo los valores actuales con los que se han introducido manual en el validador
-  if (year < currentYear) {
-    return false; // El año es menor que el actual
-  } else if (year == currentYear && month < currentMonth) {
-    return false; // El año es el actual pero el mes es menor
-  } else if (month < 1 || month > 12) {
-    return false; // Mes no válido
+  final parts = value.split('/');
+  if (parts.length != 2) return false;
+
+  final month = int.tryParse(parts[0]);
+  final year = int.tryParse(parts[1]);
+
+  if (month == null || year == null || month < 1 || month > 12) {
+    return false;
   }
 
-  return true; // La fecha es válida
+  final now = DateTime.now();
+  final expiryDate = DateTime(year, month + 1, 0);
+
+  return expiryDate.isAfter(now);
 }

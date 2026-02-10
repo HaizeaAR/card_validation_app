@@ -41,18 +41,19 @@ class CardInfo {
       }
       return null; // CVV válido
     }
-
-  static String? validateDate(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'La fecha de caducidad no puede estar vacía';
-    }
-    if (expDate == true) {
-      return null;
-  }
   
+  static String? validateDate(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'La fecha de caducidad no puede estar vacía';
+  }
+
+  if (expDate(value) == true) {
     return null;
   }
-  }
+
+  return 'Fecha de caducidad inválida';
+}
+  
 
   String? validateCardNumber(String? value) {
     if (value == null || value.isEmpty) {
@@ -72,6 +73,7 @@ class CardInfo {
     }
     return null; // Nombre válido
   } 
+  }
 
 
 
