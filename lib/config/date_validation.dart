@@ -1,17 +1,25 @@
-bool expDate(int month, int year) {
-  //con DataTime.now saco la fecha actual, luego consigo los valores de mes y saño para poder compararlos con el currentYear y currentMonth
-  final now = DateTime.now();
-  final currentYear = now.year;
-  final currentMonth = now.month;
+bool expDate(String? value) {
+  //Si no hay valor o el valor es vacío, la fecha no es válida directamente
+  if (value == null || value.isEmpty) return false;
 
-  //Comparo los valores actuales con los que se han introducido manual en el validador
-  if (year < currentYear) {
-    return false; // El año es menor que el actual
-  } else if (year == currentYear && month < currentMonth) {
-    return false; // El año es el actual pero el mes es menor
-  } else if (month < 1 || month > 12) {
-    return false; // Mes no válido
+  //Divido el valor en dos partes usando el '/' como separador, para obtener el mes y el año
+  final parts = value.split('/');
+  //Si no hay dos partes (mes y año), la fecha no es válida
+  if (parts.length != 2) return false;
+
+  //Intento convertir el mes y el año a enteros con el método tryParse, que devuelve null si la conversión falla
+  final month = int.tryParse(parts[0]);
+  final year = int.tryParse(parts[1]);
+
+  //Si el mes o el año estan vacios, o si el mes no está entre 1 y 12, la fecha no es válida
+  if (month == null || year == null || month < 1 || month > 12) {
+    return false;
   }
 
-  return true; // La fecha es válida
+  //Creo la fecha actual 
+  final now = DateTime.now();
+  //Creo la fecha final del mes de caducidad
+  final expiryDate = DateTime(year, month + 1, 0);
+  //Comparo la fecha de caducidad con la fecha actual, si la fecha de caducidad es después de la fecha actual, la tarjeta es válida
+  return expiryDate.isAfter(now);
 }
