@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:validador_tarjeta/presentation/text_bubble.dart';
 import 'config/themes/app_theme.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -51,5 +52,4 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
     );
-  }
-}
+  }}
