@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:validador_tarjeta/presentation/text_bubble.dart';
+import 'package:validador_tarjeta/presentation/text_field.dart';
 import 'config/themes/app_theme.dart';
 
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Validador de tarjetas',
-
+      
       theme: AppTheme(selectedColor: 1).theme(),
       home: const MyHomePage(title: 'Validador de tarjetas'),      
     );
