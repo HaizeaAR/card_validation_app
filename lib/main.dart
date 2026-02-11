@@ -24,7 +24,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Credit Card Form'),
+        title: const Text('Credit Card Validation'),
       ),
       body: SingleChildScrollView(
         child: Column(
