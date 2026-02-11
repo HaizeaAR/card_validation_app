@@ -18,7 +18,9 @@ class TextField extends StatefulWidget {
           height: 20,
           
           ),
-          Container(child: TextFormField())
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: TextFormField())
       ],
       );
   }
@@ -56,6 +58,7 @@ class _FullNameState extends State<FullName>{
         ),
       ],
     );
+    
   }
 }
 class CreditCard extends StatefulWidget {
