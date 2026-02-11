@@ -6,7 +6,8 @@ class MessageValidate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Material(
+    child: SizedBox(
       width: 250,
       child: TextField(
         inputFormatters: [
@@ -16,6 +17,7 @@ class MessageValidate extends StatelessWidget {
         border: OutlineInputBorder(),
         labelText: 'Credit card number',
         hintText: '400 1234 5678 9010',
+        ),
         ),
       ),
     );
@@ -27,7 +29,8 @@ class MessageCvv extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Material(
+    child: SizedBox(
       width: 250,
       child: TextField(
         obscureText: true, // con esta linea haremos que el texto se oculte al escribirlo
@@ -40,6 +43,7 @@ class MessageCvv extends StatelessWidget {
         labelText: 'CVV',
         hintText: '123',
         ),
+        ),
       ),
     );
   }
@@ -50,7 +54,8 @@ class MessageName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Material(
+    child: SizedBox(
       width: 250,
       child: TextField(
         inputFormatters: [
@@ -60,6 +65,7 @@ class MessageName extends StatelessWidget {
         border: OutlineInputBorder(),
         labelText: 'Cardholder name',
         hintText: 'Haizea Ariza Robleda',
+        ),
         ),
       ),
     );

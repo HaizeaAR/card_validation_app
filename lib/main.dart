@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:validador_tarjeta/presentation/text_field.dart';
 import 'config/themes/app_theme.dart';
 
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,11 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Validador de tarjetas',
-      
+      debugShowCheckedModeBanner: false,
       theme: AppTheme(selectedColor: 1).theme(),
-      home: const MyHomePage(title: 'Validador de tarjetas'),      
+      home: const MessageValidate()     
     );
   }
 }
