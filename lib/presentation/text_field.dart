@@ -2,6 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:validador_tarjeta/config/card_info.dart';
 
+class TextField extends StatefulWidget {
+  const TextField ({super.key});
+
+  @override
+  _TextFieldState createState() => _TextFieldState();
+}
+  class _TextFieldState extends State<TextField>{
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const SizedBox(
+          height: 20,
+          
+          ),
+          Container(child: TextFormField())
+      ],
+      );
+  }
+  } 
+
 
 class FullName extends StatefulWidget {
   const FullName ({super.key});
@@ -16,7 +38,7 @@ class _FullNameState extends State<FullName>{
     return Column(
       children: [
         const SizedBox(height: 20),
-        const Text('Full name:'),
+
         const SizedBox(height: 20),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -49,7 +71,7 @@ class _CreditCardState extends State<CreditCard>{
     return Column(
       children: [
         const SizedBox(height: 20),
-        const Text('Credit card number:'),
+ 
         const SizedBox(height: 20),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -85,7 +107,7 @@ class _CvvState extends State<Cvv>{
     return Column(
       children: [
         const SizedBox(height: 20),
-        const Text('CVV:'),
+
         const SizedBox(height: 20),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -119,7 +141,7 @@ class _ExpDateState extends State<ExpDate>{
     return Column(
       children: [
         const SizedBox(height: 20),
-        const Text('Exp date:'),
+         
         const SizedBox(height: 20),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),

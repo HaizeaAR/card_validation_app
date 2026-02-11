@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
           children: [
             FullName(),
             CreditCard(),
-            Cvv(),
-            ExpDate(),
+            
+          
           ],
         ),
       ),
