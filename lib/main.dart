@@ -28,11 +28,29 @@ class MyHomePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: const [
+          children: [
             FullName(),
             CreditCard(),
             ExpDate(),
             Cvv(),
+
+          SizedBox(height: 20),
+
+          Padding(
+          padding:  EdgeInsets.symmetric(horizontal: 20),
+          child: ElevatedButton(
+            onPressed: () { 
+            },
+            style:ElevatedButton.styleFrom(
+              minimumSize:Size.fromHeight(50),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            
+            child: Text('Check validity'),
+          ),
+          ), 
           ],
         ),
       ),
