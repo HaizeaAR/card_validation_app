@@ -2,30 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:validador_tarjeta/config/card_info.dart';
 
-class TextField extends StatefulWidget {
-  const TextField ({super.key});
-
-  @override
-  _TextFieldState createState() => _TextFieldState();
-}
-  class _TextFieldState extends State<TextField>{
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(
-          height: 20,
-          
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: TextFormField())
-      ],
-      );
-  }
-  } 
-
 
 class FullName extends StatefulWidget {
   const FullName ({super.key});
@@ -50,7 +26,9 @@ class _FullNameState extends State<FullName>{
               FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')), 
             ],
             decoration: const InputDecoration(
-            border: OutlineInputBorder(),
+            border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
             labelText: 'Type ur name here',
             hintText: 'Juan Carlos Pavón Godoy',
             ),
@@ -85,7 +63,10 @@ class _CreditCardState extends State<CreditCard>{
               LengthLimitingTextInputFormatter(19),
             ],
           decoration: const InputDecoration(
-          border: OutlineInputBorder(),
+          border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
+
           labelText: 'Card Number',
           hintText: '400 1234 5678 9010',
             ),
@@ -96,6 +77,7 @@ class _CreditCardState extends State<CreditCard>{
     );
   }
 }
+
 
 class Cvv extends StatefulWidget {
   const Cvv ({super.key});
@@ -121,7 +103,9 @@ class _CvvState extends State<Cvv>{
               LengthLimitingTextInputFormatter(3),
             ],
             decoration: const InputDecoration(
-              border: OutlineInputBorder(),
+              border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
               labelText: 'CVV',
               hintText: '123',
             ),
@@ -131,6 +115,7 @@ class _CvvState extends State<Cvv>{
     );
   }
 }
+
 class ExpDate extends StatefulWidget {
   const ExpDate ({super.key});
 
@@ -147,7 +132,7 @@ class _ExpDateState extends State<ExpDate>{
          
         const SizedBox(height: 20),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.all(15),
           child: TextFormField(
             keyboardType: TextInputType.number,
             inputFormatters: [
@@ -155,7 +140,9 @@ class _ExpDateState extends State<ExpDate>{
               LengthLimitingTextInputFormatter(5),
             ],
             decoration: const InputDecoration(
-              border: OutlineInputBorder(),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
               labelText: 'Exp date',
               hintText: '12/25',
             ),
