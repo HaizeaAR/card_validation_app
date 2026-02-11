@@ -21,7 +21,7 @@ class _FullNameState extends State<FullName>{
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: TextFormField(
-            keyboardType: TextInputType.number,
+            keyboardType: TextInputType.text,
             inputFormatters: [
               FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')), 
             ],
