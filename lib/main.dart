@@ -13,10 +13,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Validador de tarjetas',
-      debugShowCheckedModeBanner: false,
       theme: AppTheme(selectedColor: 1).theme(),
-      home: const MessageValidate()     
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+        title: const Text('Validador de tarjetas'),
+       ),
+        body: Column(
+          children: [
+            FullName(),
+            CreditCard(),
+            Cvv(),
+            expDate()
+          ],
+        ),
+      ),
     );
   }
 }
