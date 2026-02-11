@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
             FullName(),
             CreditCard(),
             Cvv(),
-            expDate()
+            ExpDate(),
           ],
         ),
       ),

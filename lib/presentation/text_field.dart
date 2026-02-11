@@ -106,14 +106,14 @@ class _CvvState extends State<Cvv>{
     );
   }
 }
-class expDate extends StatefulWidget {
-  const expDate ({super.key});
+class ExpDate extends StatefulWidget {
+  const ExpDate ({super.key});
 
   @override
-  _expDateState createState() => _expDateState();
+  _ExpDateState createState() => _ExpDateState();
 }
 
-class _expDateState extends State<expDate>{
+class _ExpDateState extends State<ExpDate>{
 @override
   Widget build(BuildContext context) {
     return Column(
