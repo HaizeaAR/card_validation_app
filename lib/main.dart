@@ -92,6 +92,8 @@ class _MyHomePageState extends State<MyHomePage> {
     key: _formKey,
     child: Column(
       children: [
+        const SizedBox(height: 10),
+        
         _DropList(),
         
         const SizedBox(height: 10),
