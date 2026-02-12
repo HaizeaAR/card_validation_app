@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:validador_tarjeta/presentation/text_field.dart';
+import 'package:validador_tarjeta/config/themes/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: const MyHomePage(),
+      theme: AppTheme.lightTheme
     );
   }
 }

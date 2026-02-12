@@ -1,29 +1,41 @@
 import 'package:flutter/material.dart';
 
-const Color _customColor = Color.fromARGB(0, 79, 220, 13);
-const List<Color> _colorThemes =[
-  _customColor,
-  Colors.blue,
-   Colors.green,
-    Colors.yellow,
-     Colors.orange,
-      Colors.red,
+const Color buttonColor = Color.fromARGB(255, 128, 152, 198);
 
-];
-
-class AppTheme {
-  final int selectedColor;
-
-  AppTheme({
-    this.selectedColor = 0
-     
-  }): assert (selectedColor >= 0 && selectedColor <=_colorThemes.length -1,
-  'Colors must be between 0 and ${_colorThemes.length}');  
-  ThemeData theme (){
+class AppTheme { 
+  static ThemeData get lightTheme {
     return ThemeData(
-      useMaterial3: true,
-      colorSchemeSeed: _colorThemes [selectedColor],
-      //brightness: Brightness.dark     
+      primarySwatch: Colors.orange,
+      hintColor: Colors.grey,
+      scaffoldBackgroundColor: Colors.white,
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: buttonColor,
+          textStyle: const TextStyle(
+            color: Color.fromARGB(255, 39, 22, 91),
+            fontSize: 16
+          ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10), 
+        ),
+      ),
+      ),
+      inputDecorationTheme: const InputDecorationTheme(
+        border: OutlineInputBorder(),
+        labelStyle: TextStyle(
+          color: Colors.blue,
+          fontSize: 18
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.blue, width: 2.0),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 2.0),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 2.0),
+        ),
+      ),
     );
     
   }
