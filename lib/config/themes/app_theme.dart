@@ -6,6 +6,7 @@ class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
       primarySwatch: Colors.orange,
+
       scaffoldBackgroundColor: Colors.white,
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -20,10 +21,10 @@ class AppTheme {
       ),
       ),
       inputDecorationTheme: const InputDecorationTheme(
-        hintStyle: TextStyle( color: Colors.grey, fontSize: 16 ),
+        hintStyle: TextStyle( color: Color.fromARGB(201, 180, 180, 180), fontSize: 16 ),
         border: OutlineInputBorder(),
         labelStyle: TextStyle(
-          color: Colors.blue,
+          color: Color.fromRGBO(5, 111, 30, 1),
           fontSize: 18
         ),
         focusedBorder: OutlineInputBorder(
