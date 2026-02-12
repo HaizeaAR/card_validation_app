@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:validador_tarjeta/config/card_info.dart';
 
 
+
+
 class FullName extends StatelessWidget {
   final TextEditingController controller;
 
@@ -9,18 +11,22 @@ class FullName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextFormField(
-        controller: controller,
-        keyboardType: TextInputType.text,
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: 'Type your name',
-          hintText: 'Juan Carlos Pavón Godoy'
-        ),
-        validator: CardUtils().validateName,
-      )
+      margin: const EdgeInsets.only(top: 20),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: TextFormField(
+          controller: controller,
+          keyboardType: TextInputType.text,
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'Type your name',
+            hintText: 'Juan Carlos Pavón Godoy'
+          ),
+          validator: CardUtils().validateName,
+        )
+      ),
     );
         }
   }
@@ -35,17 +41,21 @@ class CreditCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextFormField(
-        controller: controller,
-        keyboardType: TextInputType.number,
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: 'Card Number',
-          hintText: '1234 5678 9012 3456',
+      margin: const EdgeInsets.only(top: 20),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: TextFormField(
+          controller: controller,
+          keyboardType: TextInputType.number,
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'Card Number',
+            hintText: '1234 5678 9012 3456',
+          ),
+          validator: CardUtils().validateCardNumber,
         ),
-        validator: CardUtils().validateCardNumber,
       ),
     );
   }
@@ -60,17 +70,21 @@ class Cvv extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextFormField(
-        controller: controller,
-        keyboardType: TextInputType.number,
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: 'CVV',
-          hintText: '123',
+      margin: const EdgeInsets.only(top: 20),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: TextFormField(
+          controller: controller,
+          keyboardType: TextInputType.number,
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'CVV',
+            hintText: '123',
+          ),
+          validator: CardUtils.validateCVV,
         ),
-        validator: CardUtils.validateCVV,
       ),
     );
   }
@@ -84,17 +98,22 @@ class ExpDate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextFormField(
-        controller: controller,
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: 'Expiration Date',
+      margin: const EdgeInsets.only(top: 20),
+      color: Colors.white,
+      child: Padding(  
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: TextFormField(
+          controller: controller,
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'Expiration Date',
+          ),
+          validator: CardUtils.validateDate,
         ),
-        validator: CardUtils.validateDate,
-      ),
-      );
+        ),
+    );
   }
 }
 
