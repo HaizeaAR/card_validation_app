@@ -45,11 +45,11 @@ class CardInfo {
     static String? validateCVV(String? value) {
       //Primero penalizo al comprobar si el valor está vacío
       if (value == null || value.isEmpty) {
-        return 'CVV no puede estar vacío';
+        return 'CVV can\'t be empty';
       }
       //Luego compruebo que los dígitos entren dentro del rango establecido
       if (value.length < 3 || value.length > 4) {
-        return 'CVV debe tener 3 o 4 dígitos';
+        return 'CVV must be 3 or 4 digits';
       }
       //Si ha pasado ambas validaciones, es valido y no devuelve error
       return null; // CVV válido
@@ -58,33 +58,33 @@ class CardInfo {
     
     static String? validateDate(String? value) {
       if (value == null || value.isEmpty) {
-        return 'La fecha de caducidad no puede estar vacía';
+        return 'Expiration date can\'t be empty';
       }
       //Aqui uso la variable ya creada en date_validation (donde se comprueba que la fecha es válida)
       if (expDate(value) == true) {
         return null;
     }
     //Si no ha pasado la validación, devuelvo el error
-        return 'Fecha de caducidad inválida';
+        return 'Expiration date is invalid';
     } 
   
 
     String? validateCardNumber(String? value) {
      if (value == null || value.isEmpty) {
-      return 'El número de tarjeta no puede estar vacío';
+      return 'Card number can\'t be empty';
     }
     //Aqui uso la variable ya creada en card_number_validation (donde hice el algoritmo de Luhn para validar la tarjeta)
     if (luhn(value) == true) {
       return null;
     }
     //Si no ha pasado la validación, devuelvo el error
-    return 'Número de tarjeta no válido';
+    return 'Card number is invalid';
   }
 
   //En el nombre la comprobación es más sencilla, solo penalizo si el valor está vacío 
   String? validateName(String? value) {
     if (value == null || value.isEmpty) {
-      return 'El nombre no puede estar vacío';
+      return 'Name can\'t be empty';
     }
     //Si no esta vacio lo valido como válido
     return null; // Nombre válido

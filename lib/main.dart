@@ -17,8 +17,22 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  final _formKey = GlobalKey<FormState>();
+
+
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController cardController = TextEditingController();
+  final TextEditingController expController = TextEditingController();
+  final TextEditingController cvvController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,34 +40,34 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Credit Card Validation'),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            FullName(),
-            CreditCard(),
-            ExpDate(),
-            Cvv(),
+   body: SingleChildScrollView(
+  child: Form(
+    key: _formKey,
+    child: Column(
+      children: [
+        FullName(controller: nameController),
+        CreditCard(controller: cardController),
+        ExpDate(controller: expController),
+        Cvv(controller: cvvController),
 
-          SizedBox(height: 20),
+        const SizedBox(height: 20),
 
-          Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 20),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: ElevatedButton(
-            onPressed: () { 
+            onPressed: () {
+              if (_formKey.currentState?.validate() ?? false) {
+                debugPrint("Card is valid");
+              }
             },
-            style:ElevatedButton.styleFrom(
-              minimumSize:Size.fromHeight(50),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-            
-            child: Text('Check validity'),
+            child: const Text('Check validity'),
           ),
-          ), 
-          ],
         ),
-      ),
+      ],
+    ),
+  ),
+), 
     );
   }
 }
+

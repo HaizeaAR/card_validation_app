@@ -1,155 +1,101 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:validador_tarjeta/config/card_info.dart';
 
 
-class FullName extends StatefulWidget {
-  const FullName ({super.key});
+class FullName extends StatelessWidget {
+  final TextEditingController controller;
+
+  const FullName({super.key, required this.controller});
 
   @override
-  _FullNameState createState() => _FullNameState();
-}
-
-class _FullNameState extends State<FullName>{
-@override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 20),
-
-        const SizedBox(height: 20),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: TextFormField(
-            keyboardType: TextInputType.text,
-            inputFormatters: [
-              FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')), 
-            ],
-            decoration: const InputDecoration(
-            border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-            labelText: 'Type ur name here',
-            hintText: 'Juan Carlos Pavón Godoy',
-            ),
-          ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: TextFormField(
+        controller: controller,
+        keyboardType: TextInputType.text,
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: 'Type your name',
+          hintText: 'Juan Carlos Pavón Godoy'
         ),
-      ],
+        validator: CardUtils().validateName,
+      )
     );
+        }
+  }
+
     
-  }
-}
-class CreditCard extends StatefulWidget {
-  const CreditCard ({super.key});
+
+
+class CreditCard extends StatelessWidget {
+  final TextEditingController controller;
+
+  const CreditCard({super.key, required this.controller});
 
   @override
-  _CreditCardState createState() => _CreditCardState();
-}
-
-class _CreditCardState extends State<CreditCard>{
-@override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 20),
- 
-        const SizedBox(height: 20),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: TextFormField(
-          keyboardType: TextInputType.number,
-          inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly,
-              LengthLimitingTextInputFormatter(19),
-            ],
-          decoration: const InputDecoration(
-          border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          ),
-
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: TextFormField(
+        controller: controller,
+        keyboardType: TextInputType.number,
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(),
           labelText: 'Card Number',
-          hintText: '400 1234 5678 9010',
-            ),
-            validator:CardUtils().validateCardNumber,
-          ),
+          hintText: '1234 5678 9012 3456',
         ),
-      ],
+        validator: CardUtils().validateCardNumber,
+      ),
     );
   }
 }
 
 
-class Cvv extends StatefulWidget {
-  const Cvv ({super.key});
+
+class Cvv extends StatelessWidget {
+  final TextEditingController controller;
+
+  const Cvv({super.key, required this.controller});
 
   @override
-  _CvvState createState() => _CvvState();
-}
-
-class _CvvState extends State<Cvv>{
-@override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 20),
-
-        const SizedBox(height: 20),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: TextFormField(
-            keyboardType: TextInputType.number,
-            inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly,
-              LengthLimitingTextInputFormatter(3),
-            ],
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              labelText: 'CVV',
-              hintText: '123',
-            ),
-          ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: TextFormField(
+        controller: controller,
+        keyboardType: TextInputType.number,
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: 'CVV',
+          hintText: '123',
         ),
-      ],
+        validator: CardUtils.validateCVV,
+      ),
     );
   }
 }
 
-class ExpDate extends StatefulWidget {
-  const ExpDate ({super.key});
+
+class ExpDate extends StatelessWidget {
+  final TextEditingController controller;
+
+  const ExpDate({super.key, required this.controller});
 
   @override
-  _ExpDateState createState() => _ExpDateState();
-}
-
-class _ExpDateState extends State<ExpDate>{
-@override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 20),
-         
-        const SizedBox(height: 20),
-        Padding(
-          padding: EdgeInsets.all(15),
-          child: TextFormField(
-            keyboardType: TextInputType.number,
-            inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly,
-              LengthLimitingTextInputFormatter(5),
-            ],
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              labelText: 'Exp date',
-              hintText: '12/25',
-            ),
-          ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: TextFormField(
+        controller: controller,
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: 'Expiration Date',
         ),
-      ],
-    );
+        validator: CardUtils.validateDate,
+      ),
+      );
   }
 }
+
 
