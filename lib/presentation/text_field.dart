@@ -3,6 +3,36 @@ import 'package:flutter/services.dart';
 import 'package:validador_tarjeta/config/card_info.dart';
 
 
+class _ListDrop extends StatefulWidget { 
+@override
+  _ListDropState createState() => _ListDropState();
+  }
+
+  
+class _ListDropState extends State<_ListDrop> {
+  final items = ['Visa', 'MasterCard', 'American Express', 'Discover', 'Other']; String? selectedItem;
+  String? value;
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    appBar: AppBar(title:Text('Card type'), centerTitle: true),
+    body:Center(
+      child: DropdownButton<String>(
+        items: items.map(buildMenuItem).toList(),
+        onChanged: (value) => setState(() => this.value = value),
+    )),
+  );
+
+  DropdownMenuItem<String> buildMenuItem(String item) => 
+  DropdownMenuItem(
+    value: item, 
+    child: Text(
+      item,
+      style:TextStyle(fontSize: 20), 
+      ),
+    ); 
+  }
+
 
 
 class FullName extends StatelessWidget {
