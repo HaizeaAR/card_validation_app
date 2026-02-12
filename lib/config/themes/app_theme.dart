@@ -6,11 +6,12 @@ class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData(
       primarySwatch: Colors.orange,
-      hintColor: Colors.grey,
+      hintColor: const Color.fromARGB(255, 0, 0, 0),
+      
       scaffoldBackgroundColor: Colors.white,
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: buttonColor,
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           textStyle: const TextStyle(
             color: Color.fromARGB(255, 39, 22, 91),
             fontSize: 16
@@ -27,7 +28,7 @@ class AppTheme {
           fontSize: 18
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.blue, width: 2.0),
+          borderSide: BorderSide(color: Color.fromARGB(255, 36, 185, 23), width: 2.0),
         ),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red, width: 2.0),

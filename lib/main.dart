@@ -90,34 +90,49 @@ class _MyHomePageState extends State<MyHomePage> {
    body: SingleChildScrollView(
   child: Form(
     key: _formKey,
-    child: Column(
-      children: [
-        _DropList(),
-        
-        const SizedBox(height: 10),
+    child: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      margin: const EdgeInsets.all( 20),
 
-        FullName(controller: nameController),
-        CreditCard(controller: cardController),
-        ExpDate(controller: expController),
-        Cvv(controller: cvvController),
-
-        const SizedBox(height: 20),
-
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState?.validate() ?? false) {
-                debugPrint("Card is valid");
-              }
-            },
-            child: const Text('Check validity'),
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: const Text(
+              "Card Information",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           ),
-        ),
-      ],
-    ),
+           const SizedBox(height: 15),
+           
+          _DropList(),
+          
+          const SizedBox(height: 10),
+      
+          FullName(controller: nameController),
+          CreditCard(controller: cardController),
+          ExpDate(controller: expController),
+          Cvv(controller: cvvController),
+      
+          const SizedBox(height: 20),
+      
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState?.validate() ?? false) {
+                  debugPrint("Card is valid");
+                }
+              },
+              child: const Text('Check validity'),
+            ),
+          ),
+        ],
+      ),
+    
   ),
 ), 
+   ),
     );
   }
 }

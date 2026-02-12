@@ -123,6 +123,7 @@ class ExpDate extends StatelessWidget {
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
             labelText: 'Expiration Date',
+            hintText: 'MM/YY',
           ),
           validator: CardUtils.validateDate,
         ),
