@@ -15,7 +15,10 @@ class AppTheme {
             color: Color.fromARGB(255, 39, 22, 91),
             fontSize: 16
           ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10), 
         ),
+      ),
       ),
       inputDecorationTheme: const InputDecorationTheme(
         border: OutlineInputBorder(),
