@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:validador_tarjeta/config/card_info.dart';
 
 
@@ -19,6 +20,9 @@ class FullName extends StatelessWidget {
         child: TextFormField(
           controller: controller,
           keyboardType: TextInputType.text,
+          inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')),
+            ],
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
             labelText: 'Type your name',
@@ -47,12 +51,15 @@ class CreditCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: TextFormField(
+          inputFormatters: [
+              FilteringTextInputFormatter.digitsOnly,
+              LengthLimitingTextInputFormatter(14),],
           controller: controller,
           keyboardType: TextInputType.number,
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
             labelText: 'Card Number',
-            hintText: '1234 5678 9012 3456',
+            hintText: '400 123 456 78910',
           ),
           validator: CardUtils().validateCardNumber,
         ),
@@ -76,8 +83,12 @@ class Cvv extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: TextFormField(
+              
           controller: controller,
           keyboardType: TextInputType.number,
+          inputFormatters: [
+              FilteringTextInputFormatter.digitsOnly,
+              LengthLimitingTextInputFormatter(3),],
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
             labelText: 'CVV',
@@ -101,10 +112,15 @@ class ExpDate extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       margin: const EdgeInsets.only(top: 20),
-      color: Colors.white,
+
       child: Padding(  
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: TextFormField(
+          keyboardType: TextInputType.number,
+          inputFormatters: [
+              FilteringTextInputFormatter.digitsOnly,
+              LengthLimitingTextInputFormatter(4),
+             ],
           controller: controller,
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
