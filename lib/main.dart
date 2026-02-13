@@ -27,13 +27,14 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _DropList extends StatefulWidget { 
+class DropList extends StatefulWidget { 
+  const DropList({super.key});
 @override
-  _DropListState createState() => _DropListState();
-  }
+  DropListState createState() => DropListState();
+}
 
   
-class _DropListState extends State<_DropList> {
+class DropListState extends State<DropList> {
 final items = ['Visa', 'MasterCard', 'American Express', 'Discover', 'Other'];
 String? value;
 
@@ -105,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
            const SizedBox(height: 15),
            
-          _DropList(),
+          DropList(),
           
           const SizedBox(height: 10),
       
