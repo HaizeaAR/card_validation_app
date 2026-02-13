@@ -1,7 +1,6 @@
   
 import 'package:validador_tarjeta/config/date_validation.dart';
 import 'package:validador_tarjeta/config/card_number_validation.dart';
-import 'package:validador_tarjeta/main.dart';
 
 //Aqui represento la información de la tarjeta, con sus atributos y un constructor para inicializarlos, ademas de una clase con métodos para validar cada uno de los atributos de la tarjeta
 class CardInfo {
@@ -42,24 +41,27 @@ class CardInfo {
   //Comienzo la clase con los metodos de validación para luego usarlos dentro del text_field y validar o mostrar los errores de la validaación de la tarjeta
   class CardUtils {
 
-    //Uso un static para no tener que crear un objeto de la clase para usar los metodos de validacion
-    static String? validateCVV(String? value, String? cardNumber) {
-      if (value == null || value.isEmpty) {
-        return 'CVV can\'t be empty';
-      }
-      if (DropListState().value == 'American Express') {
-        if (value.length != 4) {
-          return 'CVV must be 4 digits for American Express';
-        }
-      } else {
-        if (value.length != 3) {
-          return 'CVV must be 3 digits';
-        }
-      }
-      
-      //Si ha pasado ambas validaciones, es valido y no devuelve error
-      return null; // CVV válido
+    static String? validateCVV(String? value, CardType? type) {
+  if (value == null || value.isEmpty) {
+    return 'CVV can\'t be empty';
+  }
+
+  if (type == null) {
+    return 'Please select a card type first';
+  }
+
+  if (type == CardType.amEx) {
+    if (value.length != 4) {
+      return 'CVV must be 4 digits for American Express';
     }
+  } else {
+    if (value.length != 3) {
+      return 'CVV must be 3 digits';
+    }
+  }
+
+  return null;
+}
 
   
     
@@ -98,6 +100,3 @@ class CardInfo {
   } 
   
   }
-
-
-

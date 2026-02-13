@@ -70,8 +70,13 @@ class CreditCard extends StatelessWidget {
 
 class Cvv extends StatelessWidget {
   final TextEditingController controller;
+  final CardType? cardType;
 
-  const Cvv({super.key, required this.controller});
+  const Cvv({
+    super.key,
+    required this.controller,
+    required this.cardType,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -80,23 +85,30 @@ class Cvv extends StatelessWidget {
       margin: const EdgeInsets.only(top: 20),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
+
         child: TextFormField(
-              
+          
           controller: controller,
           keyboardType: TextInputType.number,
           inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly],
+            FilteringTextInputFormatter.digitsOnly,
+            LengthLimitingTextInputFormatter(
+              cardType == CardType.amEx ? 4 : 3,
+            ),
+          ],
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
             labelText: 'CVV',
-            hintText: '321',
+            hintText: '123',
           ),
-          validator: (value) => CardUtils.validateCVV(value, CardInfo().cardNumber),
+          validator: (value) =>
+              CardUtils.validateCVV(value, cardType),
         ),
       ),
     );
   }
 }
+
 
 
 class ExpDate extends StatelessWidget {
@@ -130,5 +142,3 @@ class ExpDate extends StatelessWidget {
     );
   }
 }
-
-
