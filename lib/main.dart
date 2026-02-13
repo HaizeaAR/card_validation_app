@@ -87,6 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Credit Card Validation'),
+        backgroundColor: Colors.lightGreen,
       ),
    body: SingleChildScrollView(
   child: Form(
@@ -94,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
     child: Container(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       margin: const EdgeInsets.all( 20),
-
+      
       child: Column(
         children: [
           Align(
