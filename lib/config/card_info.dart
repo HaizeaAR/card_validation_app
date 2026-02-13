@@ -65,34 +65,33 @@ class CardUtils {
 }
 
   
-    
-  static String? validateDate(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Expiration date can\'t be empty';
-    }
-  //Dividimos el valor usando una barra
-  final parts = value.split('/');
-    //Si no hay dos separaciones, lanzamos un error por formato
-    if (parts.length != 2) {
-      return 'Expiration date must be in MM/YY format';
-    }
-  //Pasamos el mes y año a enteros con el tryParse,que devuelve null si la conversión falla
-  final month = int.tryParse(parts[0]);
-  final year = int.tryParse(parts[1]);
-    //Otra restricción para lanzar error si el mes no está entre 1 o 12 o si no son números validos
-    if (month == null || year == null || month < 1 || month > 12) {
-      return 'Invalid expiration date';
-    }
-  //Creo una variable con la fecha actual y otra con la de caducidad para comparar los valores
-  final now = DateTime.now();
-  final expiryDate = DateTime(year, month + 1, 0);
-    //Compruebo con la variable si la tarjeta está caducada
-    if (!expiryDate.isAfter(now)) {
-      return 'Card has expired';
-    }
-
-      return null;
+ String? validateCardDate(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Required field';
   }
+
+  // formato MM/YY (dos dígitos, barra, dos dígitos)
+  final RegExp regex = RegExp(r'^(0[1-9]|1[0-2])\/?([0-9]{2})$');
+  if (!regex.hasMatch(value)) {
+    return 'MM/YY innvalid';
+  }
+
+  // Validación lógica: Mes y Año
+  final List<String> parts = value.split('/');
+  final int month = int.parse(parts[0]);
+  final int year = int.parse(parts[1]);
+
+  final DateTime now = DateTime.now();
+  // Asumimos 20xx para el año
+  final int currentYear = int.parse(now.year.toString().substring(2));
+  final int currentMonth = now.month;
+
+  if (year < currentYear || (year == currentYear && month < currentMonth)) {
+    return 'Expired card';
+  }
+
+  return null; // Válido
+}
   
 
   String? validateCardNumber(String? value) {

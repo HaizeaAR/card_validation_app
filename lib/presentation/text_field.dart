@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:validador_tarjeta/config/card_info.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 
 class FullName extends StatelessWidget {
@@ -35,13 +36,15 @@ class FullName extends StatelessWidget {
 
     
 
+  
 
 class CreditCard extends StatelessWidget {
   final TextEditingController controller;
 
   const CreditCard({super.key, required this.controller});
 
-  @override
+  CreditCardmask() => MaskTextInputFormatter(mask: '#### #### #### ####');
+   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -50,8 +53,8 @@ class CreditCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: TextFormField(
           inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly,
-              LengthLimitingTextInputFormatter(14),],
+            CreditCardmask(),
+              ],
           controller: controller,
           keyboardType: TextInputType.number,
           decoration: const InputDecoration(
@@ -77,6 +80,8 @@ class Cvv extends StatelessWidget {
     required this.controller,
     required this.cardType,
   });
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -112,10 +117,13 @@ class Cvv extends StatelessWidget {
 
 
 class ExpDate extends StatelessWidget {
+  
   final TextEditingController controller;
 
   const ExpDate({super.key, required this.controller});
-
+  
+  get dateMask => MaskTextInputFormatter(mask: '##/##');
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -125,20 +133,20 @@ class ExpDate extends StatelessWidget {
       child: Padding(  
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: TextFormField(
-          keyboardType: TextInputType.number,
+          keyboardType: TextInputType.datetime,
           inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly,
-              LengthLimitingTextInputFormatter(4),
-             ],
+            dateMask,
+            LengthLimitingTextInputFormatter(5),
+          ],
           controller: controller,
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
             labelText: 'Expiration Date',
             hintText: 'MM/YY',
           ),
-          validator: CardUtils.validateDate,
+          validator: CardUtils().validateCardDate,
         ),
-        ),
+      )
     );
   }
 }
