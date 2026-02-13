@@ -92,7 +92,7 @@ class Cvv extends StatelessWidget {
             labelText: 'CVV',
             hintText: '123',
           ),
-          validator: CardUtils.validateCVV,
+          validator: (value) => CardUtils.validateCVV(value, CardInfo().cardNumber),
         ),
       ),
     );

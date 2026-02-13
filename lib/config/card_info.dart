@@ -42,18 +42,24 @@ class CardInfo {
   class CardUtils {
 
     //Uso un static para no tener que crear un objeto de la clase para usar los metodos de validacion
-    static String? validateCVV(String? value) {
-      //Primero penalizo al comprobar si el valor está vacío
+    static String? validateCVV(String? value, String? cardNumber) {
       if (value == null || value.isEmpty) {
         return 'CVV can\'t be empty';
       }
       //Luego compruebo que los dígitos entren dentro del rango establecido
-      if (value.length < 3 || value.length > 4) {
-        return 'CVV must be 3 or 4 digits';
-      }
+      final bool isAmex=
+          cardNumber!.startsWith('34') || cardNumber.startsWith('37');
+
+        if (isAmex && value.length != 4) {
+          return 'CVV must be 4 digit';
+        } else if (!isAmex && value.length != 3) {
+          return 'CVV must be 3 digits';
+        }
+      
       //Si ha pasado ambas validaciones, es valido y no devuelve error
       return null; // CVV válido
     }
+
   
     
     static String? validateDate(String? value) {

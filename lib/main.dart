@@ -34,7 +34,7 @@ class _DropList extends StatefulWidget {
 
   
 class _DropListState extends State<_DropList> {
-  final items = ['Visa', 'MasterCard', 'American Express', 'Discover', 'Other'];
+final items = ['Visa', 'MasterCard', 'American Express', 'Discover', 'Other'];
 String? value;
 
   @override
