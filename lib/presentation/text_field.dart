@@ -85,12 +85,11 @@ class Cvv extends StatelessWidget {
           controller: controller,
           keyboardType: TextInputType.number,
           inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly,
-              LengthLimitingTextInputFormatter(3),],
+              FilteringTextInputFormatter.digitsOnly],
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
             labelText: 'CVV',
-            hintText: '123',
+            hintText: '321',
           ),
           validator: (value) => CardUtils.validateCVV(value, CardInfo().cardNumber),
         ),
