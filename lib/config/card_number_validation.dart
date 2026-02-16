@@ -1,5 +1,5 @@
 bool luhn(String cardNumber) {
-  cardNumber = cardNumber.replaceAll(' ', '').replaceAll('-', '');
+  cardNumber = cardNumber.replaceAll(' ', '');
 
   //EL int de la suma la inicializo a 0 para usarla para guardar la suma de todos los digitos de la tarjeta y creo un booleano llamado alternate que va a encargarse de determinar el uso de los digitos
   int sum = 0;
