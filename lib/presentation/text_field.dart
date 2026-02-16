@@ -52,10 +52,10 @@ class CreditCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: TextFormField(
+          
           inputFormatters: [
             CreditCardmask(),
-            LengthLimitingTextInputFormatter (16)
-              ],
+            LengthLimitingTextInputFormatter(19),  ],
           controller: controller,
           keyboardType: TextInputType.number,
           decoration: const InputDecoration(
