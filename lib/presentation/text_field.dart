@@ -55,7 +55,7 @@ class CreditCard extends StatelessWidget {
           
           inputFormatters: [
             CreditCardmask(),
-            LengthLimitingTextInputFormatter(16),  ],
+            LengthLimitingTextInputFormatter(19),  ],
           controller: controller,
           keyboardType: TextInputType.number,
           decoration: const InputDecoration(
