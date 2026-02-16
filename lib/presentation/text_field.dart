@@ -54,6 +54,7 @@ class CreditCard extends StatelessWidget {
         child: TextFormField(
           inputFormatters: [
             CreditCardmask(),
+            LengthLimitingTextInputFormatter (16)
               ],
           controller: controller,
           keyboardType: TextInputType.number,
@@ -119,7 +120,6 @@ class Cvv extends StatelessWidget {
 class ExpDate extends StatelessWidget {
   
   final TextEditingController controller;
-
   const ExpDate({super.key, required this.controller});
   
   get dateMask => MaskTextInputFormatter(mask: '##/##');
