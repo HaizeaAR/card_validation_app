@@ -19,7 +19,7 @@ bool luhn(String cardNumber) {
     if (alternate) {
       n *= 2;
       if (n > 9) {
-        n = (n % 10) + 1;
+        n = n -= 9;
       }
     }
 
