@@ -11,7 +11,7 @@ bool luhn(String cardNumber) {
 //El i-- determina que vamos a ir saltando una posición en el recorrido
   for (int i = cardNumber.length - 1; i >= 0; i--) {
     //parse es la forma de convertir un String a un int, en este caso el número de la tarjeta
-    int n = int.parse(cardNumber[i]);
+    int n = int.parse(cardNumber[i]); 
 
     //Alternate va a ser la variable que nos va a indicar si el numero va as er usado (el que sea alternado)
     //Ejemplo: 1234567890123456; Aqui alternate va a inicializar en false (6), sin usar ese numero, luego al recorrer el algoritmo va a cambiar el valor a true y usar el siguiente digito (5) y asi sucesivamente

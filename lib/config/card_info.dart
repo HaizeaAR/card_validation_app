@@ -1,5 +1,3 @@
-  
-import 'package:validador_tarjeta/config/date_validation.dart';
 import 'package:validador_tarjeta/config/card_number_validation.dart';
 
 //Aqui represento la información de la tarjeta, con sus atributos y un constructor para inicializarlos, ademas de una clase con métodos para validar cada uno de los atributos de la tarjeta
@@ -38,48 +36,66 @@ class CardInfo {
   }
 
 
-  //Comienzo la clase con los metodos de validación para luego usarlos dentro del text_field y validar o mostrar los errores de la validaación de la tarjeta
-  class CardUtils {
+//Comienzo la clase con los metodos de validación para luego usarlos dentro del text_field y validar o mostrar los errores de la validaación de la tarjeta
+class CardUtils {
 
-    static String? validateCVV(String? value, CardType? type) {
-  if (value == null || value.isEmpty) {
-    return 'CVV can\'t be empty';
+  //Asi validamos el CVV con el tipo de tarjeta que se introduce en el despleglable
+  static String? validateCVV(String? value, CardType? type) {
+    //Si el valor esta vacio, lanzamos error
+    if (value == null || value.isEmpty) {
+      return 'CVV can\'t be empty';
   }
-
-  if (type == null) {
-    return 'Please select a card type first';
+    //Lanzamos otro error si no seleccionamos un tipo de tarjeta
+    if (type == null) {
+      return 'Please select a card type first';
   }
-
-  if (type == CardType.amEx) {
-    if (value.length != 4) {
-      return 'CVV must be 4 digits for American Express';
+    //Si la tarjeta seleccionada es AmEx, hacemos una restricción para que pida 4 digitos
+    if (type == CardType.amEx) {
+      if (value.length != 4) {
+        return 'CVV must be 4 digits for American Express';
     }
+    //Si es cualquiera de los otros tipos de tarjeta, lo dejamos con 3 digitos de restriccion
   } else {
     if (value.length != 3) {
       return 'CVV must be 3 digits';
     }
   }
 
-  return null;
+        return null;
 }
 
   
-    
-    static String? validateDate(String? value) {
-      if (value == null || value.isEmpty) {
-        return 'Expiration date can\'t be empty';
-      }
-      //Aqui uso la variable ya creada en date_validation (donde se comprueba que la fecha es válida)
-      if (expDate(value) == true) {
-        return null;
-    }
-    //Si no ha pasado la validación, devuelvo el error
-        return 'Expiration date is invalid';
-    } 
+ String? validateCardDate(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Required field';
+  }
+
+  // formato MM/YY (dos dígitos, barra, dos dígitos)
+  final RegExp regex = RegExp(r'^(0[1-9]|1[0-2])\/?([0-9]{2})$');
+  if (!regex.hasMatch(value)) {
+    return 'MM/YY innvalid';
+  }
+
+  // Validación lógica: Mes y Año
+  final List<String> parts = value.split('/');
+  final int month = int.parse(parts[0]);
+  final int year = int.parse(parts[1]);
+
+  final DateTime now = DateTime.now();
+  // Asumimos 20xx para el año
+  final int currentYear = int.parse(now.year.toString().substring(2));
+  final int currentMonth = now.month;
+
+  if (year < currentYear || (year == currentYear && month < currentMonth)) {
+    return 'Expired card';
+  }
+
+  return null; // Válido
+}
   
 
-    String? validateCardNumber(String? value) {
-     if (value == null || value.isEmpty) {
+  String? validateCardNumber(String? value) {
+    if (value == null || value.isEmpty) {
       return 'Card number can\'t be empty';
     }
     //Aqui uso la variable ya creada en card_number_validation (donde hice el algoritmo de Luhn para validar la tarjeta)
@@ -87,7 +103,7 @@ class CardInfo {
       return null;
     }
     //Si no ha pasado la validación, devuelvo el error
-    return 'Card number is invalid';
+      return 'Card number is invalid';
   }
 
   //En el nombre la comprobación es más sencilla, solo penalizo si el valor está vacío 
@@ -96,7 +112,6 @@ class CardInfo {
       return 'Name can\'t be empty';
     }
     //Si no esta vacio lo valido como válido
-    return null; // Nombre válido
+      return null; // Nombre válido
   } 
-  
-  }
+}
