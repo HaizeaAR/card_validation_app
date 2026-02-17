@@ -16,7 +16,7 @@ class SeconsScreen extends StatelessWidget {
         ),
         body: const Center(
           child: Text('Credit Card Validated Successfully!',
-              style: TextStyle(fontSize: 20,
+              style: TextStyle(fontSize: 30,
               fontWeight: FontWeight.bold,
               color: Colors.green)),
               )  
@@ -24,6 +24,6 @@ class SeconsScreen extends StatelessWidget {
         );
   }
 
-
+     
 
 }
