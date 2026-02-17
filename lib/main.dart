@@ -3,10 +3,14 @@ import 'package:validador_tarjeta/presentation/text_field.dart';
 import 'package:validador_tarjeta/config/themes/app_theme.dart';
 import 'package:validador_tarjeta/config/card_info.dart';
 
+//runApp inicializa el widget de MyApp
 void main() {
   runApp(const MyApp());
 }
 
+
+//El cuerpo de la aplicion completa
+//Stateless no guarda la informacion 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -20,7 +24,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
+//Con el Stateful si guardo informacion (lo necesito para las variables mas tarde), para el formulario
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -28,10 +32,14 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+//Con la DropList creo un desplegable para la seleccion del tipo de tarjeta
 class DropList extends StatelessWidget {
+  //Esta parte guarda el valor que ha sido seleccionado, osease, el tipo de tarjeta
   final CardType? value;
+  //Cuando se selecciona otro valor, esta es la variable que caambia
   final ValueChanged<CardType?> onChanged;
 
+  //Los requerimientos para la constante de la DropList
   const DropList({
     super.key,
     required this.value,
@@ -49,6 +57,7 @@ class DropList extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: Colors.grey, width: 2),
         ),
+        //Aqui se crea como tal el DropList, con sus valores y textos
         child: DropdownButton<CardType>(
           value: value,
           hint: const Text("Select card type"),
@@ -75,6 +84,7 @@ class DropList extends StatelessWidget {
               child: Text('Other'),
             ),
           ],
+          //Llama a la funcion de antes cuando hay un cambio de eleccion
           onChanged: onChanged,
         ),
       ),
@@ -82,35 +92,37 @@ class DropList extends StatelessWidget {
   }
 }
 
-
+//Clase para el formulario
 class _MyHomePageState extends State<MyHomePage> {
 
+  //Clave global para el formulario
   final _formKey = GlobalKey<FormState>();
 
+  //Variable que guarda el tipo de carta que ha sido seleccionada
   CardType? selectedCardType;
 
-
-
+  //Los controladores del texto que ha sido ingresado en los campos correspondientes
   final TextEditingController nameController = TextEditingController();
   final TextEditingController cardController = TextEditingController();
   final TextEditingController expController = TextEditingController();
   final TextEditingController cvvController = TextEditingController();
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //La barra superior de la aplicacion
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: const Text('Credit Card Validation'),
-
       ),
-   body: SingleChildScrollView(
-  child: Form(
-    key: _formKey,
-    child: Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      margin: const EdgeInsets.all( 20),
 
+   body: SingleChildScrollView(
+    child: Form(
+      key: _formKey,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        margin: const EdgeInsets.all( 20),
       child: Column(
         children: [
           Align(
@@ -120,29 +132,32 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
-          const SizedBox(height: 15),
-           
-          DropList(
-          value: selectedCardType,
-          onChanged: (value) {
+
+      //El SizedBox nos genera un espacio transparante para separar los widgets en la pantalla
+      const SizedBox(height: 15),
+          
+      //El widget del DropList con sus valores 
+      DropList(
+        value: selectedCardType,
+        onChanged: (value) {
           setState(() {
           selectedCardType = value;
-        });
-      },
-),
+          });
+        },
+      ),
 
           
-          const SizedBox(height: 10),
+      const SizedBox(height: 10),
       
-          FullName(controller: nameController),
-          CreditCard(controller: cardController),
-          ExpDate(controller: expController),
-          Cvv(controller: cvvController,
-          cardType: selectedCardType,
-          ),
+        FullName(controller: nameController),
+        CreditCard(controller: cardController),
+        ExpDate(controller: expController),
+        Cvv(controller: cvvController,
+            cardType: selectedCardType,
+            ),
 
       
-          const SizedBox(height: 20),
+      const SizedBox(height: 20),
       
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
