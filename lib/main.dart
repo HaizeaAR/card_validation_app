@@ -156,7 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Row(
           children: [
             Container(
-              width: MediaQuery.of(context).size.width * 0.5,
+              width: MediaQuery.of(context).size.width * 0.45,
               child: ExpDate(controller: expController),
             ),
             

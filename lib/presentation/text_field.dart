@@ -12,10 +12,10 @@ class FullName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      margin: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 0),
+      margin: const EdgeInsets.only(top: 10),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 0),
         child: TextFormField(
           controller: controller,
           keyboardType: TextInputType.text,
@@ -34,9 +34,6 @@ class FullName extends StatelessWidget {
         }
   }
 
-    
-
-  
 
 class CreditCard extends StatelessWidget {
   final TextEditingController controller;
@@ -47,10 +44,10 @@ class CreditCard extends StatelessWidget {
    @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      margin: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 0),
+      margin: const EdgeInsets.only(top: 10),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 0),
         child: TextFormField(
           
           inputFormatters: [
@@ -87,10 +84,10 @@ class Cvv extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      margin: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 0),
+      margin: const EdgeInsets.only(top: 10),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 0),
 
         child: TextFormField(
           
@@ -127,11 +124,11 @@ class ExpDate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      margin: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 0),
+      margin: const EdgeInsets.only(top: 10),
 
       child: Padding(  
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 0),
         child: TextFormField(
           keyboardType: TextInputType.datetime,
           inputFormatters: [
