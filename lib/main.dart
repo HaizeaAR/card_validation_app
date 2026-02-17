@@ -172,21 +172,30 @@ class _MyHomePageState extends State<MyHomePage> {
                     MaterialPageRoute(
                       builder: (context) => const SecondScreen(),
                     ),
-                  );          
+                  );    
+                        
                 }
-              },
-
-            child: const Text('Check validity'),
-
-            ),
-          ),
-        ],
+              }, 
+              child: const Text('Check validity')
+            )
       ),
 
-  ),
-),
-),
-);
-}
-}
+        const SizedBox(height: 20),
 
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: ElevatedButton(
+          onPressed: () {
+              _formKey.currentState?.reset();
+            },
+            child: const Text('Reset credentials'),
+          ),
+        ),
+      ],
+    ),
+    ),
+    ),
+    )
+    );
+  }
+}
