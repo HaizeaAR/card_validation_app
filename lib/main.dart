@@ -148,16 +148,25 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
           
-      const SizedBox(height: 10),
+      const SizedBox(height: 5),
       
         //Las partes del formulario y sus controladores para los input
         FullName(controller: nameController),
         CreditCard(controller: cardController),
-        ExpDate(controller: expController),
-        Cvv(controller: cvvController,
-            cardType: selectedCardType,
+        Row(
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width * 0.5,
+              child: ExpDate(controller: expController),
             ),
-
+            
+            Expanded(
+              child: Cvv(controller: cvvController,
+                  cardType: selectedCardType,
+                  ),
+            ),
+          ],
+        ),
       
       const SizedBox(height: 20),
       
@@ -172,30 +181,21 @@ class _MyHomePageState extends State<MyHomePage> {
                     MaterialPageRoute(
                       builder: (context) => const SecondScreen(),
                     ),
-                  );    
-                        
+                  );          
                 }
-              }, 
-              child: const Text('Check validity')
-            )
+              },
+
+            child: const Text('Check validity'),
+
+            ),
+          ),
+        ],
       ),
 
-        const SizedBox(height: 20),
-
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: ElevatedButton(
-          onPressed: () {
-              _formKey.currentState?.reset();
-            },
-            child: const Text('Reset credentials'),
-          ),
-        ),
-      ],
-    ),
-    ),
-    ),
-    )
-    );
-  }
+  ),
+),
+),
+);
 }
+}
+
