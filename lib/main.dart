@@ -125,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         margin: const EdgeInsets.all( 20),
       child: Column(
-        children: [
+        children: <Widget>[
           Align(
             alignment: Alignment.centerLeft,
             child: const Text(
@@ -150,6 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
           
       const SizedBox(height: 10),
       
+        //Las partes del formulario y sus controladores para los input
         FullName(controller: nameController),
         CreditCard(controller: cardController),
         ExpDate(controller: expController),
@@ -160,21 +161,23 @@ class _MyHomePageState extends State<MyHomePage> {
       
       const SizedBox(height: 20),
       
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+      //El boton que valida el formulario
+      Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
             child: ElevatedButton(
               onPressed: () {
-                
+                //Ejecuta una validacion en función de la propia validación de la key 
                 if (_formKey.currentState!.validate()) {
                   Navigator.of(context).push(
-                    
                     MaterialPageRoute(
                       builder: (context) => const SecondScreen(),
                     ),
                   );          
                 }
               },
-              child: const Text('Check validity'),
+
+            child: const Text('Check validity'),
+
             ),
           ),
         ],
