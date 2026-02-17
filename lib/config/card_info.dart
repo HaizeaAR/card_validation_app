@@ -70,22 +70,23 @@ class CardUtils {
     return 'Required field';
   }
 
-  // formato MM/YY (dos dígitos, barra, dos dígitos)
+  // Formato MM/YY 
   final RegExp regex = RegExp(r'^(0[1-9]|1[0-2])\/?([0-9]{2})$');
   if (!regex.hasMatch(value)) {
     return 'MM/YY innvalid';
   }
 
-  // Validación lógica: Mes y Año
+  // Validación del Mes y Año
   final List<String> parts = value.split('/');
   final int month = int.parse(parts[0]);
   final int year = int.parse(parts[1]);
 
   final DateTime now = DateTime.now();
-  // Asumimos 20xx para el año
+  // Asumimos que el año siempre estara por los 2000's
   final int currentYear = int.parse(now.year.toString().substring(2));
   final int currentMonth = now.month;
-
+  
+  //Damos error de tarjeta caducada si ambas variables no siguen las restricciones
   if (year < currentYear || (year == currentYear && month < currentMonth)) {
     return 'Expired card';
   }
@@ -112,6 +113,6 @@ class CardUtils {
       return 'Name can\'t be empty';
     }
     //Si no esta vacio lo valido como válido
-      return null; // Nombre válido
+      return null; 
   } 
 }
