@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:flutter/material.dart';
 
 class SecondScreen extends StatelessWidget {
@@ -9,22 +5,17 @@ class SecondScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Second Screen'),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Card Valid'),
+      ),
+      body: const Center(
+        child: Text(
+          'Tus credenciales han sido robadas!',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.green),
+          textAlign: TextAlign.center,
         ),
-        body: const Center(
-          child: Text('Credit Card Validated Successfully!',
-              style: TextStyle(fontSize: 30,
-              fontWeight: FontWeight.bold,
-
-              color: Colors.green)),
-              )  
-            ),
-        );
+      ),
+    );  
   }
-
-     
-
 }
