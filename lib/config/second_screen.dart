@@ -4,8 +4,8 @@
 
 import 'package:flutter/material.dart';
 
-class SeconsScreen extends StatelessWidget {
-  const SeconsScreen({super.key});
+class SecondScreen extends StatelessWidget {
+  const SecondScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +18,7 @@ class SeconsScreen extends StatelessWidget {
           child: Text('Credit Card Validated Successfully!',
               style: TextStyle(fontSize: 30,
               fontWeight: FontWeight.bold,
+
               color: Colors.green)),
               )  
             ),

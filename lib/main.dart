@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:validador_tarjeta/presentation/text_field.dart';
 import 'package:validador_tarjeta/config/themes/app_theme.dart';
 import 'package:validador_tarjeta/config/card_info.dart';
+import 'config/second_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -148,8 +149,14 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: ElevatedButton(
               onPressed: () {
-                if (_formKey.currentState?.validate() ?? false) {
-                  debugPrint("Card is valid");
+                
+                if (_formKey.currentState!.validate()) {
+                  Navigator.of(context).push(
+                    
+                    MaterialPageRoute(
+                      builder: (context) => const SecondScreen(),
+                    ),
+                  );          
                 }
               },
               child: const Text('Check validity'),
@@ -164,3 +171,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
