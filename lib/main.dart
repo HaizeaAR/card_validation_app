@@ -189,13 +189,25 @@ class _MyHomePageState extends State<MyHomePage> {
 
             ),
           ),
-        ],
-      ),
 
-  ),
-),
-),
-);
+           const SizedBox(height: 20),
+
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: ElevatedButton(
+          onPressed: () {
+              _formKey.currentState?.reset();
+            },
+            child: const Text('Reset credentials'),
+          ),
+        ),
+      ],
+    ),
+    ),
+    ),
+    )
+    );
+  }
 }
-}
+     
 
