@@ -34,36 +34,34 @@ class FullName extends StatelessWidget {
         }
   }
 
-
 class CreditCard extends StatelessWidget {
   final TextEditingController controller;
 
-  const CreditCard({super.key, required this.controller});
+  CreditCard({super.key, required this.controller});
 
-  CreditCardmask() => MaskTextInputFormatter(mask: '#### #### #### ####');
-   @override
+  final MaskTextInputFormatter _cardMask =
+      MaskTextInputFormatter(mask: '#### #### #### ####');
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       margin: const EdgeInsets.only(top: 10),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 0),
-        child: TextFormField(
-          
-          inputFormatters: [
-            CreditCardmask(),
-            LengthLimitingTextInputFormatter(19),  ],
-          controller: controller,
-          keyboardType: TextInputType.number,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: 'Card Number',
-            hintText: '400 123 456 78910',
-          ),
-          validator: CardUtils().validateCardNumber,
+      child: TextFormField(
+        controller: controller,
+        inputFormatters: [
+          _cardMask,
+          LengthLimitingTextInputFormatter(19),
+        ],
+        keyboardType: TextInputType.number,
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: 'Card Number',
+          hintText: '4000 1234 5678 9010',
         ),
+        validator: CardUtils().validateCardNumber,
       ),
-    );
+      );
   }
 }
 
@@ -117,17 +115,19 @@ class Cvv extends StatelessWidget {
 class ExpDate extends StatelessWidget {
   
   final TextEditingController controller;
-  const ExpDate({super.key, required this.controller});
+      ExpDate({super.key, required this.controller});
   
-  get dateMask => MaskTextInputFormatter(mask: '##/##');
-  
+  final dateMask = MaskTextInputFormatter(
+    mask: '##/##', 
+    filter: { "#": RegExp(r'[0-9]')},
+     type: MaskAutoCompletionType.lazy,
+    );  
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 10),
 
-      child: Padding(  
-        padding: const EdgeInsets.symmetric(horizontal: 0),
+
         child: TextFormField(
           keyboardType: TextInputType.datetime,
           inputFormatters: [
@@ -142,7 +142,6 @@ class ExpDate extends StatelessWidget {
           ),
           validator: CardUtils().validateCardDate,
         ),
-      )
-    );
+      );
   }
 }
