@@ -9,12 +9,23 @@ class SecondScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Card Valid'),
       ),
-      body: const Center(
-        child: Text(
-          'Ur credir card has been successfully validated!',
-          style: TextStyle(fontFamily: 'Arial', fontSize: 24, fontWeight: FontWeight.bold, color: Colors.green),
-          textAlign: TextAlign.center,
-        ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.network( "https://www.mastercard.pt/content/dam/public/mastercardcom/eu/pt/images/consumers/find-card/prepaid-cards/standard/ma_card_hrz_mm_prepaid_teal-2025.png",
+            width: 290,
+            height: 210,
+          ),
+           const SizedBox(height: 20),
+           const
+          Text(
+            'Ur credit card has been successfully validated!',
+            style: TextStyle(fontFamily: 'Arial', fontSize: 24, fontWeight: FontWeight.bold, color: Colors.green),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
       ),
     );  
   }

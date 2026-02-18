@@ -156,7 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Row(
           children: [
             Container(
-              width: MediaQuery.of(context).size.width * 0.45,
+              width: MediaQuery.of(context).size.width * 0.5,
               child: ExpDate(controller: expController),
             ),
 
@@ -191,7 +191,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
             ),
           ),
-
+          
            const SizedBox(height: 20),
 
       Padding(
@@ -204,10 +204,8 @@ class _MyHomePageState extends State<MyHomePage> {
               cardController.clear();
               expController.clear();
               cvvController.clear();
-
-              setState(() {
-                selectedCardType=null;
-              });
+                 selectedCardType=null;
+              
             },
             child: const Text('Reset credentials'),
           ),

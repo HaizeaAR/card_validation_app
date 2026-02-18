@@ -20,7 +20,7 @@ class FullName extends StatelessWidget {
           controller: controller,
           keyboardType: TextInputType.text,
           inputFormatters: [
-              FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')),
+              FilteringTextInputFormatter.allow(RegExp(r"[a-zA-ZÀ-ÿ\s]")),
             ],
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
@@ -87,7 +87,7 @@ class Cvv extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 0),
       margin: const EdgeInsets.only(top: 10),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 0),
+        padding: const EdgeInsets.symmetric(horizontal: 3),
 
         child: TextFormField(
           
@@ -124,7 +124,6 @@ class ExpDate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 0),
       margin: const EdgeInsets.only(top: 10),
 
       child: Padding(  
