@@ -11,8 +11,8 @@ class SecondScreen extends StatelessWidget {
       ),
       body: const Center(
         child: Text(
-          'Tus credenciales han sido robadas!',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.green),
+          'Ur credir card has been successfully validated!',
+          style: TextStyle(fontFamily: 'Arial', fontSize: 24, fontWeight: FontWeight.bold, color: Colors.green),
           textAlign: TextAlign.center,
         ),
       ),
