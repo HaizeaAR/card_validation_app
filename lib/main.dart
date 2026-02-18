@@ -204,7 +204,10 @@ class _MyHomePageState extends State<MyHomePage> {
               cardController.clear();
               expController.clear();
               cvvController.clear();
-                 selectedCardType=null;
+
+              setState (() {
+                selectedCardType=null;
+              });
               
             },
             child: const Text('Reset credentials'),

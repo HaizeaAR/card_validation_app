@@ -109,7 +109,7 @@ class CardUtils {
 
   //En el nombre la comprobación es más sencilla, solo penalizo si el valor está vacío 
   String? validateName(String? value) {
-    if (value == null || value.isEmpty) {
+    if (value == null || value.trim().isEmpty) {
       return 'Name can\'t be empty';
     }
     //Si no esta vacio lo valido como válido
