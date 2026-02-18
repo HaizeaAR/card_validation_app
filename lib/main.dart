@@ -159,7 +159,9 @@ class _MyHomePageState extends State<MyHomePage> {
               width: MediaQuery.of(context).size.width * 0.45,
               child: ExpDate(controller: expController),
             ),
-            
+
+            const SizedBox(height: 5),
+
             Expanded(
               child: Cvv(controller: cvvController,
                   cardType: selectedCardType,
@@ -197,6 +199,14 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ElevatedButton(
           onPressed: () {
               _formKey.currentState?.reset();
+
+              nameController.clear();
+              cardController.clear();
+              expController.clear();
+              cvvController.clear();
+
+              selectedCardType=null;
+              
             },
             child: const Text('Reset credentials'),
           ),
