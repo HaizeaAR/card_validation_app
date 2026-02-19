@@ -3,7 +3,6 @@ import 'package:validador_tarjeta/presentation/text_field.dart';
 import 'package:validador_tarjeta/config/themes/app_theme.dart';
 import 'package:validador_tarjeta/config/card_info.dart';
 import 'config/second_screen.dart';
-import 'package:flutter_credit_card/flutter_credit_card.dart' hide CardType;
 
 //runApp inicializa el widget de MyApp
 void main() {
