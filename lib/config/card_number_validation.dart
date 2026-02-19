@@ -5,17 +5,16 @@ bool luhn(String cardNumber) {
   int sum = 0;
   bool alternate = false;
 
-
-//Asi se recorre la tarjeta de derecha a izquiderda, saltando un numero desde el primero
-//Como el indice empieza en 0, hago el -1 para inicializarlo en el 1
-//El i>=0 implica que cuando llegue a algo menor que 0 pare (al final de la tarjeta)
-//El i-- determina que vamos a ir saltando una posición en el recorrido
-if (RegExp(r'(\d)\1+$').hasMatch(cardNumber)) {
-  return false;
-}
+  //Asi se recorre la tarjeta de derecha a izquiderda, saltando un numero desde el primero
+  //Como el indice empieza en 0, hago el -1 para inicializarlo en el 1
+  //El i>=0 implica que cuando llegue a algo menor que 0 pare (al final de la tarjeta)
+  //El i-- determina que vamos a ir saltando una posición en el recorrido
+  if (RegExp(r'(\d)\1+$').hasMatch(cardNumber)) {
+    return false;
+  }
   for (int i = cardNumber.length - 1; i >= 0; i--) {
     //parse es la forma de convertir un String a un int, en este caso el número de la tarjeta
-    int n = int.parse(cardNumber[i]); 
+    int n = int.parse(cardNumber[i]);
 
     //Alternate va a ser la variable que nos va a indicar si el numero va as er usado (el que sea alternado)
     //Ejemplo: 1234567890123456; Aqui alternate va a inicializar en false (6), sin usar ese numero, luego al recorrer el algoritmo va a cambiar el valor a true y usar el siguiente digito (5) y asi sucesivamente
@@ -35,11 +34,8 @@ if (RegExp(r'(\d)\1+$').hasMatch(cardNumber)) {
 
   //Aqui simplemente con el MOD compruebo si es divisible perfectamente por 10, para así validar la tarjeta
   if (sum % 10 == 0) {
-    return true; 
+    return true;
   } else {
     return false;
-  } 
-
-
-  
+  }
 }
