@@ -99,20 +99,16 @@ class ExpDate extends StatelessWidget {
   final TextEditingController controller;
   ExpDate({super.key, required this.controller});
 
-  final dateMask = MaskTextInputFormatter(
-    mask: '##/##',
-    filter: {"#": RegExp(r'[0-9]')},
-    type: MaskAutoCompletionType.lazy,
-  );
-
+  final dateMask = MaskTextInputFormatter(mask: '##/##');
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 0),
       margin: const EdgeInsets.only(top: 10),
       child: TextFormField(
-        keyboardType: TextInputType.datetime,
-        inputFormatters: [dateMask, LengthLimitingTextInputFormatter(5)],
         controller: controller,
+        inputFormatters: [dateMask, LengthLimitingTextInputFormatter(5)],
+        keyboardType: TextInputType.number,
         decoration: const InputDecoration(
           border: OutlineInputBorder(),
           labelText: 'Expiration Date',
