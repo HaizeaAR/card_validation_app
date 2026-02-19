@@ -12,9 +12,12 @@ class SecondScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.network(
-              "https://www.mastercard.pt/content/dam/public/mastercardcom/eu/pt/images/consumers/find-card/prepaid-cards/standard/ma_card_hrz_mm_prepaid_teal-2025.png",
+              'https://cdn-icons-png.flaticon.com/512/845/845646.png',
               width: 290,
               height: 210,
+              errorBuilder: (context, error, stackTrace) {
+                return Text('error ${error.toString()} ');
+              },
             ),
             const SizedBox(height: 20),
             const Text(
