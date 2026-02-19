@@ -138,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 CreditCard(controller: cardController),
                 Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: MediaQuery.of(context).size.width * 0.5,
                       child: ExpDate(controller: expController),
                     ),
