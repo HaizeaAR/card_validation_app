@@ -140,11 +140,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   cardType: selectedCardType,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      child: ExpDate(controller: expController),
-                    ),
+                    Expanded(child: ExpDate(controller: expController)),
 
                     const SizedBox(height: 5),
 

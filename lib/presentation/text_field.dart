@@ -76,7 +76,7 @@ class Cvv extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 0),
       margin: const EdgeInsets.only(top: 10),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 3),
+        padding: const EdgeInsets.symmetric(horizontal: 1),
 
         child: TextFormField(
           controller: controller,
@@ -107,16 +107,19 @@ class ExpDate extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 0),
       margin: const EdgeInsets.only(top: 10),
-      child: TextFormField(
-        controller: controller,
-        inputFormatters: [dateMask, LengthLimitingTextInputFormatter(5)],
-        keyboardType: TextInputType.number,
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: 'Expiration Date',
-          hintText: 'MM/YY',
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 3),
+        child: TextFormField(
+          controller: controller,
+          inputFormatters: [dateMask, LengthLimitingTextInputFormatter(5)],
+          keyboardType: TextInputType.number,
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'Expiration Date',
+            hintText: 'MM/YY',
+          ),
+          validator: CardUtils().validateCardDate,
         ),
-        validator: CardUtils().validateCardDate,
       ),
     );
   }
