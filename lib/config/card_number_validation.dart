@@ -9,9 +9,7 @@ bool luhn(String cardNumber) {
   //Como el indice empieza en 0, hago el -1 para inicializarlo en el 1
   //El i>=0 implica que cuando llegue a algo menor que 0 pare (al final de la tarjeta)
   //El i-- determina que vamos a ir saltando una posición en el recorrido
-  if (RegExp(r'(\d)\1+$').hasMatch(cardNumber)) {
-    return false;
-  }
+
   for (int i = cardNumber.length - 1; i >= 0; i--) {
     //parse es la forma de convertir un String a un int, en este caso el número de la tarjeta
     int n = int.parse(cardNumber[i]);
