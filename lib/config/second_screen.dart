@@ -21,7 +21,7 @@ class SecondScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             const Text(
-              'Ur credit card has been successfully validated!',
+              'Your credit card has been successfully validated!',
               style: TextStyle(
                 fontFamily: 'Arial',
                 fontSize: 24,
