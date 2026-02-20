@@ -27,6 +27,21 @@ class CardInfo {
 //Enum para los tipos de tarjeta (represento valores constantes)
 enum CardType { visa, mastercard, amEx, discover, other }
 
+bool _matchesCardType(String value, CardType type) {
+  switch (type) {
+    case CardType.visa:
+      return value.startsWith('4');
+    case CardType.mastercard:
+      return value.startsWith(RegExp(r'5[1-5]'));
+    case CardType.amEx:
+      return value.startsWith('34') || value.startsWith('37');
+    case CardType.discover:
+      return value.startsWith('6');
+    default:
+      return true;
+  }
+}
+
 //Comienzo la clase con los metodos de validación para luego usarlos dentro del text_field y validar o mostrar los errores de la validaación de la tarjeta
 class CardUtils {
   //Asi validamos el CVV con el tipo de tarjeta que se introduce en el despleglable
@@ -83,16 +98,24 @@ class CardUtils {
     return null; // Válido
   }
 
-  String? validateCardNumber(String? value) {
+  String? validateCardNumber(String? value, CardType? type) {
     if (value == null || value.isEmpty) {
       return 'Card number can\'t be empty';
     }
-    //Aqui uso la variable ya creada en card_number_validation (donde hice el algoritmo de Luhn para validar la tarjeta)
-    if (luhn(value) == true) {
-      return null;
+
+    if (type == null) {
+      return 'Please select a card type first';
     }
-    //Si no ha pasado la validación, devuelvo el error
-    return 'Card number is invalid';
+
+    if (!_matchesCardType(value, type)) {
+      return 'Card number does not match selected card type';
+    }
+
+    if (!luhn(value)) {
+      return 'Card number is invalid';
+    }
+
+    return null;
   }
 
   //En el nombre la comprobación es más sencilla, solo penalizo si el valor está vacío

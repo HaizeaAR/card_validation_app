@@ -135,7 +135,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 //Las partes del formulario y sus controladores para los input
                 FullName(controller: nameController),
-                CreditCard(controller: cardController),
+                CreditCard(
+                  controller: cardController,
+                  cardType: selectedCardType,
+                ),
                 Row(
                   children: [
                     SizedBox(

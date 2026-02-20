@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:validador_tarjeta/main.dart';
 import 'package:validador_tarjeta/config/card_info.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
@@ -35,8 +36,9 @@ class FullName extends StatelessWidget {
 
 class CreditCard extends StatelessWidget {
   final TextEditingController controller;
+  final CardType? cardType;
 
-  CreditCard({super.key, required this.controller});
+  CreditCard({super.key, required this.controller, required this.cardType});
 
   final MaskTextInputFormatter _cardMask = MaskTextInputFormatter(
     mask: '#### #### #### ####',
@@ -56,7 +58,7 @@ class CreditCard extends StatelessWidget {
           labelText: 'Card Number',
           hintText: '4000 1234 5678 9010',
         ),
-        validator: CardUtils().validateCardNumber,
+        validator: (value) => CardUtils().validateCardNumber(value, cardType),
       ),
     );
   }
